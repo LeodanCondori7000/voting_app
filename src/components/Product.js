@@ -1,14 +1,16 @@
 import React from "react";
 class Product extends React.Component {
+  handleUpVote = () => this.props.onVote(this.props.id);
+
   render() {
     return (
       <div className="item">
         <div className="image">
-          <img src={this.props.productImageUrl} />
+          <img src={this.props.productImageUrl} alt={this.props.description} />
         </div>
         <div className="middle aligned content">
           <div className="header">
-            <a>
+            <a onClick={this.handleUpVote}>
               <i className="large caret up icon" />
             </a>
             {this.props.votes}
@@ -22,6 +24,7 @@ class Product extends React.Component {
             <img
               className="ui avatar image"
               src={this.props.submitterAvatarUrl}
+              alt={this.props.title}
             />
           </div>
         </div>
